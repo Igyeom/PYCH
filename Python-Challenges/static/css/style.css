@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+body {
+    font-family: JetBrains Mono;
+}
+
+.y {
+    color: yellow;
+}
+
+.b {
+    color: #00aaff;
+}
+
+table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    background: #222;
+    color: white;
+    font-size: 24pt;
+    font-family: JetBrains Mono;
+    text-align: center;
+    border: none;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table tr:nth-child(even){background-color: black;}
+
+table tr:hover {background-color: #333;}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #04AA6D;
+}
+
+a {
+    color: #a55
+}

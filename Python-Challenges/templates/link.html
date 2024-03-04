@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Challenges</title>
+    <link rel="stylesheet" href="./static/css/style.css">
+    <script src="https://replit.com/public/js/repl-auth-v2.js"></script>
+    <link rel="icon"
+      type="image/ico"
+      href="./static/favicon.ico">
+    <span id="data" hidden>{{ sheet }}</span>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body style="background:#111;color:white;text-align:center;">
+    <h1><span class="b">Python</span> <span class="y">Challenges</span></h1>
+    <footer>Site created by Igyeom Park (GISKL, Year 9)</footer><br>
+    <div id="code-ui">
+        <h4>Enter Code</h1>
+        <div>
+            <input type="text" maxlength="1" size="1" style="font-size: 80pt; width: 60pt;" onkeyup="if(this.value.length === this.maxLength) document.getElementById('digit2').focus();" id="digit1">
+            <input type="text" maxlength="1" size="1" style="font-size: 80pt; width: 60pt;" onkeyup="if(this.value.length === this.maxLength) document.getElementById('digit3').focus();" id="digit2">
+            <input type="text" maxlength="1" size="1" style="font-size: 80pt; width: 60pt;" onkeyup="if(this.value.length === this.maxLength) document.getElementById('digit4').focus();" id="digit3">
+            <input type="text" maxlength="1" size="1" style="font-size: 80pt; width: 60pt;" onkeyup="if(this.value.length === this.maxLength) document.getElementById('digit5').focus();" id="digit4">
+            <input type="text" maxlength="1" size="1" style="font-size: 80pt; width: 60pt;" onkeyup="if(this.value.length === this.maxLength) document.getElementById('digit6').focus();" id="digit5">
+            <input type="text" maxlength="1" size="1" style="font-size: 80pt; width: 60pt;" onkeyup="if(this.value.length === this.maxLength) location.href = 'verify@' + $('#digit1').val() + $('#digit2').val() + $('#digit3').val() + $('#digit4').val() + $('#digit5').val() + $('#digit6 ').val() + '?email=' + location.search.split('email=')[1];" id="digit6">
+        </div>
+    </div>
+    <script src="./static/js/script.js"></script>
+</body>
+</html>

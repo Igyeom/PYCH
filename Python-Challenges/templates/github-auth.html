@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Challenges</title>
+    <style>
+      pre, h4 {
+        display: inline-block;
+      }
+    </style>
+    <link rel="stylesheet" href="./static/css/style.css">
+    <script src="https://replit.com/public/js/repl-auth-v2.js"></script>
+    <link rel="icon"
+      type="image/ico"
+      href="./static/favicon.ico">
+    <span id="data" hidden>{{ sheet }}</span>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body style="background:#111;color:white;text-align:center;">
+    {{ button }}
+    <h1><span class="b">Python</span> <span class="y">Challenges</span></h1>
+    <footer>Site created by Igyeom Park (GISKL, Year 9)</footer><br>
+    <h2>Linking GitHub account for:</h2>
+    <h1 id='email'>{{ email }}</h1>
+    <input type="text" placeholder="GitHub Username" id="username" onkeyup="$('#pre-username').html($('#username').val()); update();"><br>
+    <h4>Create a new repository called: <pre id="repo-name">[enter username to view]</pre> on your account <pre id="pre-username">[enter username to view]</pre> and press 'Verify' below.</h4><br>
+    <button onclick="check();">Verify</button>
+    <script>
+      const repoID = randInt(100000, 999999);
+      
+      function randInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) ) + min;
+      }
+      function update() {
+        $('#repo-name').html($('#email').html().slice(0, 6) + '-pych-' + repoID);
+      }
+      function check() {
+        $.ajax("https://github.com/" + $('#username').val() + "/" + $('#email').html().slice(0, 6) + '-pych-' + repoID, {
+          statusCode: {
+             404: function() {
+               alert("Cannot verify repository. Make sure it is visible at https://github.com/" + $('#username').val() + "/" + $('#email').html().slice(0, 6) + '-pych-' + repoID)
+             },
+             200: function() {
+               location.href = "link-github?email=" + $('#email').html() + "&username=" + $('#username').val()
+             }
+          }
+        });
+      }
+    </script>
+</body>
+</html>
