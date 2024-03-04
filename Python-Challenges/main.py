@@ -1,6 +1,7 @@
 from flask import *
 from PIL import Image, ImageDraw, ImageFont
 from time import sleep
+from markupsafe import Markup
 import io
 import requests
 import os
