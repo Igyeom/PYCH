@@ -135,31 +135,8 @@ def live():
 
 @app.route('/')
 def home():
-  if request.headers['X-Replit-User-Id'] != '':
-    new_user = True
-    with open('static/users.json', 'r+') as f:
-      users = json.load(f)
-      for i in users:
-        if i["user"] == request.headers['X-Replit-User-Name']:
-          new_user = False
-      if new_user:
-        users.insert(0, {"user": request.headers['X-Replit-User-Name'], "school": None, "birth": None, "certified": [], "points": 0, "joined": str(datetime.now()), "avatar":"https://pbs.twimg.com/profile_images/1577395477137526784/ECF9IL4v_400x400.jpg"})
-        
-        f.seek(0)
-        f.truncate(0)
-        json.dump(users, f, indent=4)
-    with open("./static/challenges.tsv", "r") as f:
-      resp = make_response(render_template("home.html", sheet=f.read(), button=Markup('<div onclick="location.href = \'logout\'"; style="height: 40pt; width: 200px; margin: auto; background: orange; color: black; font-size: 30pt; cursor: pointer;">Log Out</div><br><div onclick="location.href = \'me\'"; style="height: 40pt; width: 200px; margin: auto; background: limegreen; color: black; font-size: 30pt; cursor: pointer;">Profile</div><br><div onclick="location.href = \'claim\'"; style="height: 40pt; width: 450px; margin: auto; background: coral; color: black; font-size: 30pt; cursor: pointer;">Claim Certificate</div><br><div onclick="location.href = \'rank\';" style="height: 40pt; width: 450px; margin: auto; background: black; color: white; font-size: 30pt; cursor: pointer;">Global Leaderboard</div>' if "SESSION" in request.cookies else '<div onclick="login();" style="height: 40pt; width: 450px; margin: auto; background: white; color: black; font-size: 30pt; cursor: pointer;">Login with GitHub</div><br><div onclick="location.href = \'rank\';" style="height: 40pt; width: 500px; margin: auto; background: black; color: white; font-size: 30pt; cursor: pointer;">Global Leaderboard</div>')))
-
-    session = secrets.token_urlsafe(24)
-    sessions.update({request.headers['X-Replit-User-Name']: session})
-    
-    resp.set_cookie("SESSION", session)
-    
-    return resp
-  else:
-    with open("./static/challenges.tsv", "r") as f:
-      return render_template("home.html", sheet=f.read(), button=Markup('<div onclick="location.href = \'logout\'"; style="height: 40pt; width: 200px; margin: auto; background: orange; color: black; font-size: 30pt; cursor: pointer;">Log Out</div><br><div onclick="location.href = \'me\'"; style="height: 40pt; width: 200px; margin: auto; background: limegreen; color: black; font-size: 30pt; cursor: pointer;">Profile</div><br><div onclick="location.href = \'claim\'"; style="height: 40pt; width: 450px; margin: auto; background: coral; color: black; font-size: 30pt; cursor: pointer;">Claim Certificate</div><br><div onclick="location.href = \'rank\';" style="height: 40pt; width: 450px; margin: auto; background: black; color: white; font-size: 30pt; cursor: pointer;">Global Leaderboard</div>' if "SESSION" in request.cookies else '<div onclick="login();" style="height: 40pt; width: 450px; margin: auto; background: white; color: black; font-size: 30pt; cursor: pointer;">Login with GitHub</div><br><div onclick="location.href = \'rank\';" style="height: 40pt; width: 500px; margin: auto; background: black; color: white; font-size: 30pt; cursor: pointer;">Global Leaderboard</div>'))
+  with open("./static/challenges.tsv", "r") as f:
+    return render_template("home.html", sheet=f.read(), button=Markup('<div onclick="location.href = \'logout\'"; style="height: 40pt; width: 200px; margin: auto; background: orange; color: black; font-size: 30pt; cursor: pointer;">Log Out</div><br><div onclick="location.href = \'me\'"; style="height: 40pt; width: 200px; margin: auto; background: limegreen; color: black; font-size: 30pt; cursor: pointer;">Profile</div><br><div onclick="location.href = \'claim\'"; style="height: 40pt; width: 450px; margin: auto; background: coral; color: black; font-size: 30pt; cursor: pointer;">Claim Certificate</div><br><div onclick="location.href = \'rank\';" style="height: 40pt; width: 450px; margin: auto; background: black; color: white; font-size: 30pt; cursor: pointer;">Global Leaderboard</div>' if "SESSION" in request.cookies else '<div onclick="login();" style="height: 40pt; width: 450px; margin: auto; background: white; color: black; font-size: 30pt; cursor: pointer;">Login with GitHub</div><br><div onclick="location.href = \'rank\';" style="height: 40pt; width: 500px; margin: auto; background: black; color: white; font-size: 30pt; cursor: pointer;">Global Leaderboard</div>'))
 
 @app.route('/claim')
 def claim():
