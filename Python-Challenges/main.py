@@ -227,7 +227,7 @@ def logout():
 @app.route('/login')
 def login():
   try:
-    data = json.loads(requests.get("https://api.github.com/user", headers={"Authorization": "Bearer " + requests.post("https://github.com/login/oauth/access_token", {"client_id": "a1e884efc8b5b30c4cc3", "client_secret": os.getenv("SECRET"), "code": request.args["code"], "redirect_uri": "http://python-challenges.igyeom2.repl.co/login"}).text[13:-36]}).text)
+    data = json.loads(requests.get("https://api.github.com/user", headers={"Authorization": "Bearer " + requests.post("https://github.com/login/oauth/access_token", {"client_id": "a1e884efc8b5b30c4cc3", "client_secret": os.getenv("SECRET"), "code": request.args["code"], "redirect_uri": "http://morsecode.fun:8080/login"}).text[13:-36]}).text)
     new_user = True
     with open('static/users.json', 'r+') as f:
       users = json.load(f)
